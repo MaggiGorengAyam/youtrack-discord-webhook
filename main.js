@@ -74,7 +74,12 @@ exports.rule = entities.Issue.onChange({
             embed.thumbnailUrl = change.thumbnail;
         } else {
             body.title = changeCount + " New Changes To " + issue.id;
-            body.color = COLORS.DEFAULT;
+          	body.color = COLORS.DEFAULT;
+          	changes.forEach(function(change) {
+              if (change.title.includes("Issue Resolved")) {
+                body.color = COLORS.GREEN;
+              }
+            });
             for (let i = 0; i < changes.length; i++) embed.addField(new Field(changes[i].title, changes[i].description, false));
         }
 
