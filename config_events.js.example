@@ -22,18 +22,27 @@ const EVENTS = [
         newDescription: "Card moved to $newValue.",
         changeDescription: "Card moved from $oldValue to $newValue.",
         issueKey: "Stage",
+      	color: COLORS.YELLOW,
         nameKey: "name"
     },
-    {
-        title: "Assignee Changed",
-        newDescription: "Assignee set to $newValue.",
-        changeDescription: "Assignee changed from $oldValue to $newValue.",
-        issueKey: "Assignee",
-        nameKey: "visibleName"
+  	{
+        title: "Type Changed",
+        newDescription: "Type changed to $newValue.",
+        changeDescription: "Card type changed from $oldValue to $newValue.",
+        issueKey: "Type",
+        nameKey: "name"
     },
+//     {
+//         title: "Assignee Changed",
+//         newDescription: "Assignee set to $newValue.",
+//         changeDescription: "Assignee changed from $oldValue to $newValue.",
+//         issueKey: "Assignee",
+//         nameKey: "visibleName"
+//     },
     {
         title: "Comment Added",
         newDescription: "$newValue",
+      	color: COLORS.GREY,
         customCheck: function (issue) {
             // Only send message if comment was created rather than edited
             return issue.comments.isChanged && issue.comments.added.size >= 1;
@@ -48,6 +57,7 @@ const EVENTS = [
         newDescription: "The issue priority was set to $newValue.",
         changeDescription: "The issue priority was changed from $oldValue to $newValue.",
         issueKey: "Priority",
+      	color: COLORS.PURPLE,
         nameKey: "name"
     },
     {
@@ -63,7 +73,7 @@ const EVENTS = [
     {
         title: "Issue Resolved",
         newDescription: "The issue with the ID $newValue has been resolved.",
-        color: COLORS.POSITIVE,
+        color: COLORS.GREEN,
         customCheck: function (issue) {
             return issue.becomesResolved;
         },
